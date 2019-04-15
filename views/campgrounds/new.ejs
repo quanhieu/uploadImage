@@ -9,8 +9,10 @@
 
                 <div class="form-group">
                     <label for="image">Image</label>
-                    <input type="file" id="image" name="image" accept="image/*" required>
+                    <input type="file" id="uploader" name="image" onchange="showImg()" accept="image/*" required>
                 </div>
+
+                <img src="" id="imgDisplay">
                 
                 <div class="form-group">
                     <input class="form-control" type="text" name="campground[description]" placeholder="description">
