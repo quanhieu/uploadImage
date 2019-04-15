@@ -6,10 +6,12 @@
                 <div class="form-group">
                     <input class="form-control" type="text" name="name" value="<%= campground.name %>">
                 </div>
+
                 <div class="form-group">
                     <label for="image">Image</label>
-                    <input type="file" id="image" name="image" accept="image/*">
+                    <input type="file" id="image" name="image" accept="image/*" value="<%= campground.image %>">
                 </div>
+
                 <div class="form-group">
                     <input class="form-control" type="text" name="description" value="<%= campground.description %>">
                 </div>
@@ -21,4 +23,3 @@
         </div>
     </div>
 <% include ../partials/footer %>
-

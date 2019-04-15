@@ -3,6 +3,7 @@ var router  = express.Router();
 var Campground = require("../models/campground");
 var middleware = require("../middleware");
 var request = require("request");
+
 var multer = require('multer');
 var storage = multer.diskStorage({
   filename: function(req, file, callback) {
@@ -19,9 +20,9 @@ var imageFilter = function (req, file, cb) {
 var upload = multer({ storage: storage, fileFilter: imageFilter})
 
 var cloudinary = require('cloudinary');
-cloudinary.config({ 
-  cloud_name: 'learntocodeinfo', 
-  api_key: process.env.CLOUDINARY_API_KEY, 
+cloudinary.config({
+  cloud_name: 'learntocodeinfo',
+  api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
@@ -38,7 +39,7 @@ router.get("/", function(req, res){
                 res.render("campgrounds/index",{campgrounds:allCampgrounds});
 
             }
-});
+        });
        }
     });
 });
@@ -71,7 +72,7 @@ router.post("/", middleware.isLoggedIn, upload.single('image'), function(req, re
 
 //NEW - show form to create new campground
 router.get("/new", middleware.isLoggedIn, function(req, res){
-   res.render("campgrounds/new"); 
+   res.render("campgrounds/new");
 });
 
 // SHOW - shows more info about one campground
@@ -148,4 +149,3 @@ router.delete('/:id', function(req, res) {
 });
 
 module.exports = router;
-
